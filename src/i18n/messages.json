@@ -1,0 +1,14 @@
+{
+  "en": {
+    "tab1.title": "Greeting",
+    "tab2.title": "Loading...",
+    "greeting.hello": "Hello {name}!",
+    "greeting.name": "Name"
+  },
+  "es": {
+    "tab1.title": "Saludo",
+    "tab2.title": "Cargando...",
+    "greeting.hello": "¡Hola {name}!",
+    "greeting.name": "Nombre"
+  }
+}
