@@ -1,9 +1,9 @@
 # React Redux Frontend Boilerplate
 
-Base template for WR frontend projects built with React and Redux.
+Base template for WR (Web-React) frontend projects built with React and Redux in Dome Consulting.
 
 This template is a starting point for building a frontend using React and Redux.
-Provides the project's folder structure, main dependencies and commonly used configurations.
+It provides the project's folder structure, main dependencies and commonly used configurations.
 
 To start a new project, copy this template and replace the example code.
 
@@ -19,25 +19,25 @@ open http://localhost:8000
 
 ## Folder structure
 
-* `conf` Contains per environment configuration
-* `dist` Publish directory
+* `conf` Contains the configuration per environment
+* `dist` Directory where the resources (JS/CSS/HTML) are published 
 * `src` Intended for source code and unit tests
-  * `actions` Redux actions and Redux Thunk functions
+  * `actions` Redux action creators and Redux Thunk functions
   * `components` React-redux components grouped by feature
   * `i18n` Provides internationalization
   * `reducers` Provides the root reducer
   * `routes` Provides the Redux router and routes definitions
-  * `store` Provides the Redux store with Thunk middleware
+  * `store` Provides the Redux store with Redux Thunk middleware
 * `test` Intended for integration tests and unit tests helpers
 
 ## Available scripts
 
 * `npm start` Starts WebpackDevServer in watch mode with `local` configuration
 * `npm test` Runs all tests in `src/**/*.spec.js`
-* `npm run build-local` Builds the frontent for local development
-* `npm run build-dev` Builds the frontent for the development environment
-* `npm run build-pre` Builds the frontent for the pre-production environment
-* `npm run build-production` Builds the frontent for the production environment
+* `npm run build-local` Builds the frontend for local development
+* `npm run build-dev` Builds the frontend for the development environment
+* `npm run build-pre` Builds the frontend for the pre-production environment
+* `npm run build-production` Builds the frontend for the production environment
 
 ## Supported features
 
@@ -45,7 +45,7 @@ This project template supports:
 
 * [ES6](https://github.com/lukehoban/es6features) syntax
 * [ES6 polyfills](https://babeljs.io/docs/usage/polyfill/)
-* [Stage 1 preset](https://babeljs.io/docs/plugins/preset-stage-1/)  features
+* [Stage 1 preset](https://babeljs.io/docs/plugins/preset-stage-1/) features
 * [JSX](https://facebook.github.io/react/docs/hello-world.html) syntax
 * [SASS](http://sass-lang.com/) Preprocessor
 
