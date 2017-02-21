@@ -30,6 +30,12 @@ open http://localhost:8000
   * `store` Provides the Redux store with Redux Thunk middleware
 * `test` Intended for integration tests and unit tests helpers
 
+## Internationalization
+
+This boilerplate uses * [React-intl](https://github.com/yahoo/react-intl/) for internationalization.
+The translated messages are stored as JSON in `src/i18n/messages.json`. 
+The supported languages must be defined in `src/i18n/index.js` and have the corresponding entries in the JSON file.
+
 ## Available scripts
 
 * `npm start` Starts WebpackDevServer in watch mode with `local` configuration
