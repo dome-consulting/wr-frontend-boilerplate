@@ -21,8 +21,10 @@ const languageWithoutRegionCode = language.toLowerCase().split(/[_-]+/)[0];
 /* Try full locale, fallback to locale without region code, fallback to en */
 const messages = localeData[languageWithoutRegionCode] || localeData[language] || localeData.en;
 
-export default ({ children }) => (
+const I18n = ({ children }) => (
     <IntlProvider locale={language} messages={messages} >
         {children}
     </IntlProvider>
 );
+
+export default I18n;
