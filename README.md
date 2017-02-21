@@ -1,8 +1,8 @@
 # React Redux Frontend Boilerplate
 
-Base template for WR (Web-React) frontend projects built with React and Redux in Dome Consulting.
+Base template for WR (Web-React) frontend projects at Dome Consulting.
 
-This template is a starting point for building a frontend using React and Redux.
+This template is a starting point for building a frontend using React, Redux and Material-UI.
 It provides the project's folder structure, main dependencies and commonly used configurations.
 
 To start a new project, copy this template and replace the example code.
