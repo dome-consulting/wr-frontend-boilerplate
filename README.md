@@ -32,7 +32,7 @@ open http://localhost:8000
 
 ## Internationalization
 
-This boilerplate uses * [React-intl](https://github.com/yahoo/react-intl/) for internationalization.
+This boilerplate uses [React-intl](https://github.com/yahoo/react-intl/) for internationalization.
 The translated messages are stored as JSON in `src/i18n/messages.json`. 
 The supported languages must be defined in `src/i18n/index.js` and have the corresponding entries in the JSON file.
 
