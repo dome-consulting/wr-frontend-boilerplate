@@ -44,6 +44,7 @@ The supported languages must be defined in `src/i18n/index.js` and have the corr
 * `npm run build-dev` Builds the frontend for the development environment
 * `npm run build-pre` Builds the frontend for the pre-production environment
 * `npm run build-production` Builds the frontend for the production environment
+* `npm run generate-doc` Generates project documentation (ESDoc)
 
 ## Supported features
 
