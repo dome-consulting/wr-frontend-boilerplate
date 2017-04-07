@@ -3,10 +3,16 @@ import { routerMiddleware } from 'react-router-redux';
 
 import { createStore, applyMiddleware } from 'redux';
 import thunk from 'redux-thunk';
+import { composeWithDevTools } from 'redux-devtools-extension/logOnlyInProduction';
 
-import reducer from '../reducers';
+import reducers from '../reducers';
 
-export default createStore(
-    reducer, 
-    applyMiddleware(routerMiddleware(browserHistory), thunk)
-);
+const composeEnhancers = composeWithDevTools({
+    // Specify here name, actionsBlacklist, actionsCreators and other options if needed
+});
+
+const middlewares = applyMiddleware(routerMiddleware(browserHistory), thunk);
+
+const store = createStore(reducers, composeEnhancers(middlewares));
+
+export default store;

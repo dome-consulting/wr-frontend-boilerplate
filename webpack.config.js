@@ -8,6 +8,20 @@ const colors = require('colors/safe');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
 
+const errorProp = (label, value, mvn = false) => {
+  if (mvn)
+    return label + ": " + value;
+  
+  return colors.inverse(label) + ": " + value;
+}
+
+const logProp = (label, value, mvn = false) => {  
+  if (mvn)
+    console.info(label, ': ', value);
+  
+  return colors.white(colors.bold(label)) + ": " + colors.bold(colors.blue(value));
+}
+
 /* Build Paths */
 const SRCDIR = path.resolve(__dirname, 'src');
 const CNFDIR = path.resolve(__dirname, 'conf');
@@ -15,10 +29,18 @@ const OUTDIR = path.resolve(__dirname, 'dist');
 
 /* Custom fancy log */
 const log = (title, text) => {
-  console.info(`${colors.reset.white(title)}: ${colors.bold.blue(text)}`)
+  console.info(logProp(title, text));
+  //console.log(`${colors.reset.white(title)}: ${colors.bold.blue(text)}`)
 };
 
-module.exports = (env = {}) => {
+module.exports = (env = {}, mvn = false) => {
+  if (!env.conf) {
+    throw errorProp(" !! MISSING_ENVIRONMENT !! ", "No se ha especificado el valor para env.conf !! ");
+  }
+  
+  log("Webpack configuration for", env.p, mvn);
+  log("Devserver enabled", !!env.devserver, mvn);
+  console.info();
 
   const buildMinified = !!env.minify;
 
@@ -49,7 +71,7 @@ module.exports = (env = {}) => {
 
     /* Additional modules */
     module: {
-      loaders: [
+      rules: [
         /* Loader for js and jsx files */
         {
           include: SRCDIR,
@@ -87,24 +109,7 @@ module.exports = (env = {}) => {
         template: path.resolve(SRCDIR, 'index.html'),
         hash: true,
         inject: true
-      }),
-
-      /* Minimize code, but avoid mangle */
-      new webpack.optimize.UglifyJsPlugin({
-          minimize : buildMinified,
-          comments : !buildMinified,
-          mangle : false
-      }),
-
-      /* Set NODE_ENV only for production */
-      new webpack.DefinePlugin(buildMinified 
-        ? {
-            "process.env": { 
-              NODE_ENV: 'production'
-            }
-          } 
-        : {}
-      )
+      })
     ],
 
     /* Local development server configuration */
@@ -129,6 +134,30 @@ module.exports = (env = {}) => {
         /* Enable hot deploy */
         new webpack.HotModuleReplacementPlugin()
       );
+  }
+
+  if (env.conf === 'pro') {
+    webpackConfig.plugins.push(
+      new webpack.DefinePlugin({
+        'process.env': {
+          NODE_ENV: JSON.stringify('production')
+        }
+      }), 
+      /* Minimize code, but avoid mangle */
+      new webpack.optimize.UglifyJsPlugin({
+        minimize : buildMinified,
+        comments : !buildMinified,
+        mangle: false
+      })
+    );
+  } else {
+    webpackConfig.plugins.push(
+      new webpack.DefinePlugin({
+        'process.env': {
+          NODE_ENV: JSON.stringify('development')
+        }
+      })
+    );
   }
 
   return webpackConfig;
